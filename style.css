@@ -1,0 +1,43 @@
+/* Dark hacker style */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  font-family: monospace;
+}
+
+.container {
+  text-align: center;
+}
+
+.glow {
+  font-size: 2.5rem;
+  color: red;
+  text-shadow: 0 0 10px red, 0 0 20px crimson, 0 0 40px darkred;
+}
+
+.subtitle {
+  margin-top: 10px;
+  color: #aaa;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid red;
+  color: red;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: red;
+  color: black;
+}
