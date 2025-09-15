@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Counter</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .counter-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .counter-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    #count {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: bold;
+      color: #0078ff;
+      margin: 10px 0;
+      transition: color 0.3s ease;
+    }
+
+    #count:hover {
+      color: #ff5722;
+    }
+
+    p {
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      margin-top: 10px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-box">
+    <h1>Total Visitors</h1>
+    <div id="count">Loading...</div>
+    <p>people have visited this website</p>
+  </div>
+
+  <script>
+    // Ganti namespace & key biar unik
+    const namespace = "mycleanwebsite";
+    const key = "visits";
+
+    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("count").innerText = data.value.toLocaleString();
+      })
+      .catch(err => {
+        document.getElementById("count").innerText = "Error";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
